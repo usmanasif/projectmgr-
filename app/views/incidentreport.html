@@ -1,0 +1,88 @@
+<div class="row">
+  <div class="col-xs-10 col-xs-offset-1">
+    <h5>Incident Report</h5>
+    <div class="row">
+      <form id="reportForm" class="form-horizontal">
+          <div class="control-group">
+            <label class="control-label" for="typeTxt">Report Type </label>  
+            <div class="controls">
+              <input type="text" id="typeTxt" name="typeTxt" ng-model="report.report_type" />
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label" for="yourNameTxt">Your Name </label>  
+            <div class="controls">
+              <input type="text" id="yourNameTxt" name="yourNameTxt" ng-model="report.your_name" />
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label" for="jobTitleTxt">Job Title </label>  
+            <div class="controls">
+              <input type="text" id="jobTitleTxt" name="jobTitleTxt" ng-model="report.job_title" />
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label" for="injuryDateTxt">Injury Date </label>  
+            <div class="controls">
+              <input type="text" id="injuryDateTxt" name="injuryDateTxt" ng-model="report.injury_date" />
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label" for="injuryTimeTxt">Time of Injury </label>  
+            <div class="controls">
+              <input type="text" id="injuryTimeTxt" name="injuryTimeTxt" ng-model="report.injury_time" />
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label" for="witnessesTxt">Witnesses </label>  
+            <div class="controls">
+              <input type="text" id="witnessesTxt" name="witnessesTxt" ng-model="report.witnesses" />
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label" for="locationTxt">Location </label>  
+            <div class="controls">
+              <input type="text" id="locationTxt" name="locationTxt" ng-model="report.location" />
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label" for="circumstancesTxt">Circumstances </label>  
+            <div class="controls">
+              <input type="text" id="circumstancesTxt" name="circumstancesTxt" ng-model="report.circumstances" />
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label" for="descriptionTxt">Description of Event</label>  
+            <div class="controls">
+              <input type="text" id="descriptionTxt" name="descriptionTxt" ng-model="report.event_discription" />
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label" for="injuriesTypeTxt">What Injuries Occurred </label>  
+            <div class="controls">
+              <input type="text" id="injuriesTypeTxt" name="injuriesTypeTxt" ng-model="report.injuries_type" />
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label" for="ppeTxt">What PPE Being Used </label>  
+            <div class="controls">
+              <input type="text" id="ppeTxt" name="ppeTxt" ng-model="report.ppe_used" />
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label" for="assistanceProvidedTxt">Medical Assistance Provided </label>  
+            <div class="controls">
+              <input type="text" id="assistanceProvidedTxt" name="assistanceProvidedTxt" ng-model="report.medical_assistance_provided" />
+            </div>
+          </div>
+          <br/>
+          <div class="button-group">
+            <button type="submit" role="submit" class="btn btn-primary">
+              Save
+            </button>
+            <span class="btn btn-success" ng-click="gotoProjectMgr()"> Sign up</span>  
+          </div>
+      </form>
+    </div>
+  </div>
+</div> 

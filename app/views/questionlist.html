@@ -1,0 +1,15 @@
+<div class="row">
+  <select ng-model="category" ng-change="selectCategory()" 
+    ng-options="question as question.name for question in questions">
+    <option value>Select a Question</option>
+  </select>
+  
+</div>
+<div class="row">
+  <div class="btn-group-vertical">
+    <button type="button" class="btn btn-success"><i class="fa fa-circle"></i> Yes</button>
+    <button type="button" class="btn btn-danger"><i class="fa fa-circle"></i> No</button>
+    <button type="button" class="btn btn-default"><i class="fa fa-circle"></i> NA</button>
+  </div>  
+</div>
+
