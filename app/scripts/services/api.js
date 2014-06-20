@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('projectmgrApp')
-  .service('Api', ['$http', '$q', function ($http, $q, endpoint, params){
+  .service('Api', ['$http', '$q', '$rootScope', function ($http, $q, $rootScope, endpoint, params){
     this.get = function(endpoint, params) {
       var deferred = $q.defer();
       $http({
@@ -25,7 +25,7 @@ angular.module('projectmgrApp')
     };
     this.post = function(endpoint, params) {
       var deferred = $q.defer();
-      console.log(params)
+      console.log(params);
       $http({
         url: endpoint,
         method: "POST",
@@ -41,6 +41,7 @@ angular.module('projectmgrApp')
       }).
       error(function(data, status, headers, config) {
         console.log('failed');
+        console.dir(data);
         deferred.resolve(data);
       });
       return deferred.promise;
@@ -62,6 +63,7 @@ angular.module('projectmgrApp')
         }).
         error(function(data, status, headers, config) {
           console.log('failed');
+          console.dir(data);
           deferred.resolve(data);
         });
         return deferred.promise;
@@ -83,6 +85,7 @@ angular.module('projectmgrApp')
         }).
         error(function(data, status, headers, config) {
           console.log('failed');
+          console.dir(data);
           deferred.resolve(data);
         });
         return deferred.promise;

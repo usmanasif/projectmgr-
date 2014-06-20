@@ -1,9 +1,15 @@
-<div class="row">
-  <select ng-model="category" ng-change="selectCategory()" 
-    ng-options="question as question.name for question in questions">
-    <option value>Select a Question</option>
-  </select>
-  
+<div class="page-header">
+  <i class="fa fa-bars fa-2"></i> Select a Question
+</div>
+
+<div class="list-group scroller">
+  <div class="list-group-item" ng-repeat="question in questions">
+    <div>
+      <span class="fa fa-plus" ng-click="gotoReportIncident(question.id)"></span>
+      <a ng-click="gotoCategoryList(question.id)">{{question.body}}</a>
+      <span class="fa fa-asterisk pull-right"></span>
+    </div>
+  </div>  
 </div>
 <div class="row">
   <div class="btn-group-vertical">

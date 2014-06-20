@@ -38,11 +38,11 @@ angular.module('projectmgrApp')
         errorPlacement: validateUtils.errorPlacement,
         submitHandler: function() {
           Api.post(settings.url + 'users.json', $scope.user)
-            .success(function(data, status, headers, config) {
-              $location.url('/manage');
+            .success(function (data) {
+              console.dir(data);
             })
-            .error(function(data, status, headers, config) {
-              console.log('login failed');
+            .error(function (data, status) {
+              console.dir(data);
           });
         }
       }

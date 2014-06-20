@@ -1,14 +1,14 @@
-<div class="row">
+<div class="page-header">
   <i class="fa fa-bars fa-2"></i> Open Project
 </div>
 <div class="container">
-  <div class="row" ng-repeat="project in projects">
-    <div class="col-xs-2">
-      <span class="fa-plus" ng-click="gotoReportIncident(project.id)"></span>
-    </div>
-    <div class="cols-xs-8" ng-click="gotoCategoryList(project.id)">{{project.name}}</div>
-    <div class="cols-xs-2">
-      <span class="fa-asterisk"></span>
-    </div>
+  <div class="list-group scroller">
+    <div class="list-group-item" ng-repeat="project in projects">
+      <div>
+        <span class="fa fa-plus" ng-click="gotoReportIncident(project.id)"></span>
+        <a ng-click="gotoCategoryList(project.id)">{{project.name}}</a>
+        <span class="fa fa-asterisk pull-right"></span>
+      </div>
+    </div>  
   </div>
 </div>
