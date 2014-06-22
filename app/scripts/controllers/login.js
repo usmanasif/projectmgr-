@@ -9,12 +9,12 @@ angular.module('projectmgrApp')
     $("#loginForm").validate({
       rules: {
         usernameTxt: {
-          required: true,
-          email: true,
-          minlength: 6,
-          maxlength : 100
+            required: true,
+            email: true,
+            minlength: 6,
+            maxlength : 100
           },
-          passwordTxt: {
+        passwordTxt: {
             required: true,
             maxlength : 100
           }
@@ -23,13 +23,15 @@ angular.module('projectmgrApp')
         unhighlight: validateUtils.unhighlight,            
         errorPlacement: validateUtils.errorPlacement,
         submitHandler: function() {
-          var promise = Api.post(settings.url + 'users/sign_in.json', $scope.user);
-          promise.sucess(function (data){
-            console.dir(data)
-          });
-
-          promise.error(function (err){
-            console.dir(err);
+          var user = {user: $scope.user};
+          console.dir(user);
+          var promise = Api.post(settings.url + 'users/sign_in.json', user);
+          promise.then(
+            function (data){
+              console.dir(data);
+            }, 
+            function (err){
+              console.dir(err);
           });
         }
     });

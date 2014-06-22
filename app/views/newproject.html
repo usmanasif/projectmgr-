@@ -1,24 +1,26 @@
+<div class="app-header">
+  <i class="fa fa-book"></i><span class="project-name">Start a new project</span>
+</div>
 <div class="row">
   <div class="col-xs-10 col-xs-offset-1">
-    <h5>New Project</h5>
     <div class="row">
       <form id="projectForm" class="form-horizontal">
           <div class="control-group">
-            <label class="control-label" for="nameTxt">User Name </label>  
+            <label class="control-label" for="nameTxt">Name </label>  
             <div class="controls">
-              <input type="text" id="nameTxt" name="nameTxt" ng-model="project.name" />
+              <input type="text" id="nameTxt" name="nameTxt" ng-model="project.name" class="form-control"/>
             </div>
           </div>
           <div class="control-group">
             <label class="control-label" for="addressTxt">Address </label>  
             <div class="controls">
-              <input type="text" id="addressTxt" name="addressTxt" ng-model="project.address" />
+              <input type="text" id="addressTxt" name="addressTxt" ng-model="project.address" class="form-control"/>
             </div>
           </div>
           <div class="control-group">
             <label class="control-label" for="contactTxt">Contact Info </label>  
             <div class="controls">
-              <input type="text" id="contactTxt" name="contactTxt" ng-model="project.contact_info" />
+              <input type="text" id="contactTxt" name="contactTxt" ng-model="project.contact_info" class="form-control"/>
             </div>
           </div>
           <br/>
@@ -26,7 +28,6 @@
             <button type="submit" role="submit" class="btn btn-primary">
               Save
             </button>
-            <span class="btn btn-success" ng-click="gotoProjectMgr()"> Sign up</span>  
           </div>
       </form>
     </div>

@@ -24,11 +24,11 @@ angular.module('projectmgrApp', [
       templateUrl: 'views/projectmgr.html',
       controller: 'ProjectmgrCtrl'
     })
-    .when('/categoryList', {
+    .when('/categoryList/:id', {
       templateUrl: 'views/categorylist.html',
       controller: 'CategorylistCtrl'
     })
-    .when('/questionList', {
+    .when('/questionList/:id', {
       templateUrl: 'views/questionlist.html',
       controller: 'QuestionlistCtrl'
     })
@@ -62,15 +62,18 @@ var validateUtils = {
 
   highlight: function(element) {
     if($(element).siblings("i").length === 0){
-      var icon = $("<i>").addClass("fa fa-exclamation-triangle");
+      var icon = $("<i>").addClass("fa fa-exclamation-triangle text-danger");
       $(element).after(icon);
     }
   },
   unhighlight: function(element){
     $(element).siblings("i").remove();
+    $(element).qtip('destroy', true);
+    $(element).closest(".control-group").removeClass("has-error").addClass("has-success");
+    
   },            
   errorPlacement: function(error, element) {
-    element.siblings("i").qtip({
+    var qTipSettings = {
       content: {
         text: error.text() // Use the "div" element next to this for the content
       },
@@ -79,6 +82,9 @@ var validateUtils = {
         at: 'bottom center'
       },
       style:'qtip qtip-red qtip-rounded qtip-shadow'
-    });
+    };
+    
+    element.closest(".control-group").removeClass("has-success").addClass("has-error");
+    element.qtip(qTipSettings);
   }
 };

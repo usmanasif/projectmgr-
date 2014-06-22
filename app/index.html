@@ -27,19 +27,17 @@
     <![endif]-->
 
 
-    <div class="header navbar navbar-default navbar-fixed-top">
-      <div class="btn-group">
-        <span  class="btn">
-          <i class="fa fa-chevron-left"></i> Back</div>
-        </span>
-        <span class="btn pull-right">
-          <i class="fa fa-envelope-o"></i>
-        </button>
-      </div>
+    <div class="header navbar-fixed-top text-danger" ng-controller="HeaderCtrl">
+      <span  class="btn" ng-show="isBackAllowed()" ng-click="gotoBack()">
+        <i class="fa fa-chevron-left"></i>Back
+      </span>
+      <span class="btn pull-right" ng-show="isSendAllowed()" style="display:inline-block">
+        <i class="fa fa-external-link"></i>
+      </span>
     </div>
 
     <!-- Add your site or application content here -->
-    <div class="container" ng-view="" style="padding-bottom: 50px"></div>
+    <div class="container" ng-view="" style="padding-top: 50px; padding-bottom: 50px"></div>
 
     <div class="footer navbar navbar-default navbar-fixed-bottom">
       
@@ -86,6 +84,7 @@
         <script src="scripts/services/api.js"></script>
         <script src="scripts/services/headersauthinterceptor.js"></script>
         <script src="scripts/services/responseauthinterceptor.js"></script>
+        <script src="scripts/controllers/header.js"></script>
         <!-- endbuild -->
 </body>
 </html>

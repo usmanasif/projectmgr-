@@ -14,6 +14,7 @@ body {
 
 /* Custom page header */
 .header {
+  background-color: white;
   border-bottom: 1px solid #e5e5e5;
 }
 /* Make the masthead heading the same height as the navigation */
@@ -27,8 +28,9 @@ body {
 /* Custom page footer */
 .footer {
   padding-top: 19px;
-  color: #777;
+  color: whitesmoke;
   border-top: 1px solid #e5e5e5;
+  background-color: darkgrey;
 }
 
 /* Customize container */
@@ -64,6 +66,10 @@ body {
   overflow-y:scroll; 
 }
 
+.scroller>.list-group-item{
+  font-size: 1.2em;
+}
+
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   /* Remove the padding we set earlier */
@@ -81,4 +87,33 @@ body {
   .jumbotron {
     border-bottom: 0;
   }
+}
+
+.container {
+  padding-left: 0;
+  padding-right: 0;
+}
+.row {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.header>.btn {
+  font-size: 2.2em;
+}
+.app-header{
+  background-color: darkgrey;
+  color: whitesmoke;
+  font-size: 1.5em;
+  margin-top: -1em;
+  padding: 0.8em;
+}
+
+.project-name {
+  padding-left: 0.5em;
+}
+
+.form-control {
+  width: 95%;
+  display: inline-block;
 }

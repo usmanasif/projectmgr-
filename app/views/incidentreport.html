@@ -1,78 +1,81 @@
+<div class="app-header">
+  Incident Report
+</div>
+
 <div class="row">
   <div class="col-xs-10 col-xs-offset-1">
-    <h5>Incident Report</h5>
     <div class="row">
       <form id="reportForm" class="form-horizontal">
-          <div class="control-group">
+          <div class="control-group has-feedback">
             <label class="control-label" for="typeTxt">Report Type </label>  
             <div class="controls">
-              <input type="text" id="typeTxt" name="typeTxt" ng-model="report.report_type" />
+              <input type="text" id="typeTxt" name="typeTxt" ng-model="report.report_type" class="form-control"/>
             </div>
           </div>
           <div class="control-group">
             <label class="control-label" for="yourNameTxt">Your Name </label>  
             <div class="controls">
-              <input type="text" id="yourNameTxt" name="yourNameTxt" ng-model="report.your_name" />
+              <input type="text" id="yourNameTxt" name="yourNameTxt" ng-model="report.your_name" class="form-control"/>
             </div>
           </div>
           <div class="control-group">
             <label class="control-label" for="jobTitleTxt">Job Title </label>  
             <div class="controls">
-              <input type="text" id="jobTitleTxt" name="jobTitleTxt" ng-model="report.job_title" />
+              <input type="text" id="jobTitleTxt" name="jobTitleTxt" ng-model="report.job_title" class="form-control"/>
             </div>
           </div>
           <div class="control-group">
             <label class="control-label" for="injuryDateTxt">Injury Date </label>  
             <div class="controls">
-              <input type="text" id="injuryDateTxt" name="injuryDateTxt" ng-model="report.injury_date" />
+              <input type="text" id="injuryDateTxt" name="injuryDateTxt" ng-model="report.injury_date" class="form-control"/>
             </div>
           </div>
           <div class="control-group">
             <label class="control-label" for="injuryTimeTxt">Time of Injury </label>  
             <div class="controls">
-              <input type="text" id="injuryTimeTxt" name="injuryTimeTxt" ng-model="report.injury_time" />
+              <input type="text" id="injuryTimeTxt" name="injuryTimeTxt" ng-model="report.injury_time" class="form-control"/>
             </div>
           </div>
           <div class="control-group">
             <label class="control-label" for="witnessesTxt">Witnesses </label>  
             <div class="controls">
-              <input type="text" id="witnessesTxt" name="witnessesTxt" ng-model="report.witnesses" />
+              <input type="text" id="witnessesTxt" name="witnessesTxt" ng-model="report.witnesses" class="form-control"/>
             </div>
           </div>
           <div class="control-group">
             <label class="control-label" for="locationTxt">Location </label>  
             <div class="controls">
-              <input type="text" id="locationTxt" name="locationTxt" ng-model="report.location" />
+              <input type="text" id="locationTxt" name="locationTxt" ng-model="report.location" class="form-control"/>
             </div>
           </div>
           <div class="control-group">
             <label class="control-label" for="circumstancesTxt">Circumstances </label>  
             <div class="controls">
-              <input type="text" id="circumstancesTxt" name="circumstancesTxt" ng-model="report.circumstances" />
+              <input type="text" id="circumstancesTxt" name="circumstancesTxt" ng-model="report.circumstances" class="form-control"/>
             </div>
           </div>
           <div class="control-group">
             <label class="control-label" for="descriptionTxt">Description of Event</label>  
             <div class="controls">
-              <input type="text" id="descriptionTxt" name="descriptionTxt" ng-model="report.event_discription" />
+              <input type="text" id="descriptionTxt" name="descriptionTxt" ng-model="report.event_discription" class="form-control"/>
             </div>
           </div>
           <div class="control-group">
             <label class="control-label" for="injuriesTypeTxt">What Injuries Occurred </label>  
             <div class="controls">
-              <input type="text" id="injuriesTypeTxt" name="injuriesTypeTxt" ng-model="report.injuries_type" />
+              <input type="text" id="injuriesTypeTxt" name="injuriesTypeTxt" ng-model="report.injuries_type" class="form-control"/>
             </div>
           </div>
           <div class="control-group">
             <label class="control-label" for="ppeTxt">What PPE Being Used </label>  
             <div class="controls">
-              <input type="text" id="ppeTxt" name="ppeTxt" ng-model="report.ppe_used" />
+              <input type="text" id="ppeTxt" name="ppeTxt" ng-model="report.ppe_used" class="form-control"/>
             </div>
           </div>
           <div class="control-group">
             <label class="control-label" for="assistanceProvidedTxt">Medical Assistance Provided </label>  
             <div class="controls">
-              <input type="text" id="assistanceProvidedTxt" name="assistanceProvidedTxt" ng-model="report.medical_assistance_provided" />
+              <input type="text" id="assistanceProvidedTxt" name="assistanceProvidedTxt" ng-model="report.medical_assistance_provided" class="form-control"/>
             </div>
           </div>
           <br/>
@@ -80,7 +83,7 @@
             <button type="submit" role="submit" class="btn btn-primary">
               Save
             </button>
-            <span class="btn btn-success" ng-click="gotoProjectMgr()"> Sign up</span>  
+            <a href="javascript:void(0);"><i class="fa fa-camera fa-3x" style="vertical-align: middle"></i> </a>
           </div>
       </form>
     </div>
