@@ -61,15 +61,6 @@ body {
   margin-top: 28px;
 }
 
-.scroller{
-  max-height: 450px;
-  overflow-y:scroll; 
-}
-
-.scroller>.list-group-item{
-  font-size: 1.2em;
-}
-
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   /* Remove the padding we set earlier */
@@ -116,4 +107,27 @@ body {
 .form-control {
   width: 95%;
   display: inline-block;
+}
+
+.answers {
+  position: relative;
+  top: 18em;
+}
+
+#sw-wrapper {
+  top: 28em !important;
+}
+
+#sw-header {
+  display: none;
+}
+
+#sw-frame {
+  -webkit-box-sizing:content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+}
+
+.sw-center {
+  text-align: center;
 }

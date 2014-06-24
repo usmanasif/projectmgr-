@@ -2,8 +2,8 @@
 
 angular.module('projectmgrApp')
   .controller('HeaderCtrl', ['$scope', '$location', function ($scope, $location) {
-    var isBackAllowed = false;
-    var isSendAllowed = false;
+    var isBackAllowed = true;
+    var isSendAllowed = true;
     $scope.isBackAllowed = function (){
       return isBackAllowed;
     };
@@ -18,7 +18,6 @@ angular.module('projectmgrApp')
 
     var updateHeaderStatus = function () {
       var location = ($location.path().match(/\/\w+/)|| [])[0];
-      console.log(location);
 
       switch (location) {
         case '/':
@@ -30,11 +29,7 @@ angular.module('projectmgrApp')
           isBackAllowed = true;
           isSendAllowed = false;
           break;
-        case '/projectMgr':
-        case '/categoryList':
-        case '/questionList':
-        case '/newProject':
-        case '/incidentReport':
+        default:
           isBackAllowed = true;
           isSendAllowed = true;
           break;

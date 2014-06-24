@@ -1,14 +1,3 @@
-<div class="app-header">
-  <i class="fa fa-book"></i><span class="project-name">Open Project</span>
-</div>
-<div class="container">
-  <div class="list-group scroller">
-    <div class="list-group-item" ng-repeat="project in projects">
-      <div>
-        <span class="fa fa-plus" ng-click="gotoReportIncident(project.id)"></span>
-        <a ng-click="gotoCategoryList(project.id)">{{project.name}}</a>
-        <span class="fa fa-asterisk pull-right"></span>
-      </div>
-    </div>  
-  </div>
-</div>
+<button type="button" class="btn btn-primary btn-lg btn-block" ng-click="gotoNewProject()">Start a New Project</button>
+<br/>
+<button type="button" class="btn btn-default btn-lg btn-block" ng-click="gotoProjectList()">View Projects</button>

@@ -28,7 +28,10 @@ angular.module('projectmgrApp')
           var promise = Api.post(settings.url + 'users/sign_in.json', user);
           promise.then(
             function (data){
-              console.dir(data);
+              if(data && data.data && data.data.id)
+              {
+                $location.path('/projectMgr');
+              }
             }, 
             function (err){
               console.dir(err);

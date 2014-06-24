@@ -44,6 +44,22 @@ angular.module('projectmgrApp', [
       templateUrl: 'views/newproject.html',
       controller: 'NewprojectCtrl'
     })
+    .when('/newchecklist', {
+      templateUrl: 'views/newchecklist.html',
+      controller: 'NewchecklistCtrl'
+    })
+    .when('/checklistmgr/:id', {
+      templateUrl: 'views/checklistmgr.html',
+      controller: 'ChecklistmgrCtrl'
+    })
+    .when('/checklist', {
+      templateUrl: 'views/checklist.html',
+      controller: 'ChecklistCtrl'
+    })
+    .when('/projectlist', {
+      templateUrl: 'views/projectlist.html',
+      controller: 'ProjectlistCtrl'
+    })
     .otherwise({
       redirectTo: '/login'
     });
@@ -83,7 +99,7 @@ var validateUtils = {
       },
       style:'qtip qtip-red qtip-rounded qtip-shadow'
     };
-    
+
     element.closest(".control-group").removeClass("has-success").addClass("has-error");
     element.qtip(qTipSettings);
   }

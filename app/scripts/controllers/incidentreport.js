@@ -61,7 +61,6 @@ angular.module('projectmgrApp')
           alert("success");
         }
       });
-
   }]);
 
 

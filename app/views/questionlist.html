@@ -1,21 +1,9 @@
 <div class="app-header">
   <i class="fa fa-bars fa-2"></i> Select a Question
 </div>
-
-<div class="list-group scroller">
-  <div class="list-group-item" ng-repeat="question in questions">
-    <div>
-      <span class="fa fa-plus" ng-click="gotoReportIncident(question.id)"></span>
-      <a ng-click="gotoCategoryList(question.id)">{{question.body}}</a>
-      <span class="fa fa-asterisk pull-right"></span>
-    </div>
-  </div>  
-</div>
-<div class="row">
-  <div class="btn-group-vertical">
-    <button type="button" class="btn btn-success"><i class="fa fa-circle"></i> Yes</button>
-    <button type="button" class="btn btn-danger"><i class="fa fa-circle"></i> No</button>
-    <button type="button" class="btn btn-default"><i class="fa fa-circle"></i> NA</button>
-  </div>  
+<div class="answers">
+    <button type="button" class="btn btn-success btn-block"><i class="fa fa-circle"></i> Yes</button>
+    <button type="button" class="btn btn-danger btn-block"><i class="fa fa-circle"></i> No</button>
+    <button type="button" class="btn btn-default btn-block"><i class="fa fa-circle"></i> NA</button>
 </div>
 

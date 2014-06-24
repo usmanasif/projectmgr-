@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('projectmgrApp')
-  .controller('QuestionlistCtrl', ['$scope', '$location', 'Api',
+  .controller('ProjectlistCtrl', ['$scope', '$location', 'Api',
     function ($scope, $location, Api) {
     var numbers = [
       { key: '1', value:'Project Name 1'},
@@ -18,7 +18,7 @@ angular.module('projectmgrApp')
     $("#sw-wrapper").on("click", function(){
       var selectedData = SpinningWheel.getSelectedValues();
       var projectId = selectedData.keys[0];
-      
+      $location.path('/checklistmgr/' + projectId);
       $scope.$apply();
     });
     
@@ -31,6 +31,6 @@ angular.module('projectmgrApp')
     });
 
     $scope.$on('$destroy', function() {
-      SpinningWheel.destroy();
-    });
+            SpinningWheel.destroy();
+        });
   }]);
