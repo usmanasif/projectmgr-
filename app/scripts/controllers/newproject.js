@@ -2,10 +2,6 @@
 
 angular.module('projectmgrApp')
   .controller('NewprojectCtrl', ['$scope', '$location', 'Api', function ($scope, $location, Api) {
-    $scope.gotoProjectMgr = function () {
-      $location.path("/projectMgr");
-    };
-
     $("#projectForm").validate({
       rules: {
         nameTxt: {

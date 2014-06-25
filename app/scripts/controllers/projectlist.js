@@ -31,6 +31,6 @@ angular.module('projectmgrApp')
     });
 
     $scope.$on('$destroy', function() {
-            SpinningWheel.destroy();
-        });
+      SpinningWheel.destroy();
+    });
   }]);

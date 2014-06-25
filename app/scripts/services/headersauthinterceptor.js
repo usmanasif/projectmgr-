@@ -7,8 +7,8 @@ angular.module('projectmgrApp')
       request: function (config) {
         config.headers = config.headers || {}
         if ($window.sessionStorage.token) {
-          config.headers.Authorization = $window.sessionStorage.token;
-          config.headers.AuthorizationUser = $window.sessionStorage.user;
+          config.headers.authenticity_token = $window.sessionStorage.token;
+          // config.headers.AuthorizationUser = $window.sessionStorage.user;
         }
         return config;
       }

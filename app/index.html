@@ -28,20 +28,25 @@
     <![endif]-->
 
 
-    <div class="header navbar-fixed-top text-danger" ng-controller="HeaderCtrl">
-      <span  class="btn" ng-show="isBackAllowed()" ng-click="gotoBack()">
+    <div class="header navbar-fixed-top" ng-controller="HeaderCtrl">
+      <a class="btn" ng-show="isBackAllowed()" ng-click="gotoBack()">
         <i class="fa fa-chevron-left"></i>Back
-      </span>
-      <span class="btn pull-right" ng-show="isSendAllowed()" style="display:inline-block">
-        <i class="fa fa-external-link"></i>
-      </span>
+      </a>
+      <a class="btn pull-right" ng-show="isHomeAllowed()" ng-click="gotoHome()" style="display:inline-block">
+        <i class="fa fa-home"></i>
+      </a>
     </div>
 
     <!-- Add your site or application content here -->
     <div class="container" ng-view="" style="padding-top: 50px; padding-bottom: 50px"></div>
 
-    <div class="footer navbar navbar-default navbar-fixed-bottom">
-      
+    <div class="footer navbar navbar-default navbar-fixed-bottom" ng-controller="FooterCtrl">
+      <div ng-show="hasFooter()">
+        <a href="javascript:void(0);" class="btn" ng-click="createProject()"><i class="fa fa-plus-circle fa-4x"></i></a>
+        <a href="javascript:void(0);" class="btn" ng-click="openProject()"><i class="fa fa-file fa-4x"></i></a>
+        <a href="javascript:void(0);" class="btn" ng-click="reportIncident()" ng-class="hasSelectedProject()"><i class="fa fa-medkit fa-4x" ></i></a>
+        <a href="javascript:void(0);" class="btn" ng-click="openCheckList()" ng-class="hasSelectedProject()"><i class="fa fa-list-ul fa-4x"></i></a>
+      </div>
     </div>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
@@ -91,6 +96,7 @@
     <script src="scripts/controllers/checklistmgr.js"></script>
     <script src="scripts/controllers/checklist.js"></script>
     <script src="scripts/controllers/projectlist.js"></script>
+    <script src="scripts/controllers/footer.js"></script>
     <!-- endbuild -->
 </body>
 </html>

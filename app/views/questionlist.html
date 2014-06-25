@@ -1,9 +1,16 @@
 <div class="app-header">
   <i class="fa fa-bars fa-2"></i> Select a Question
 </div>
-<div class="answers">
-    <button type="button" class="btn btn-success btn-block"><i class="fa fa-circle"></i> Yes</button>
-    <button type="button" class="btn btn-danger btn-block"><i class="fa fa-circle"></i> No</button>
-    <button type="button" class="btn btn-default btn-block"><i class="fa fa-circle"></i> NA</button>
+<div class="answers" ng-show="isQuestionSelected">
+    <button type="button" class="btn btn-success btn-block" ng-click="selectAnswer()"><i class="fa fa-circle"></i> Yes</button>
+    <button type="button" class="btn btn-danger btn-block" ng-click="selectAnswer()"><i class="fa fa-circle"></i> No</button>
+    <button type="button" class="btn btn-default btn-block" ng-click="selectAnswer()"><i class="fa fa-circle"></i> NA</button>
+    <div class="control-group">
+      <label for="notesTxt" class="control-label">Notes</label>
+      <div class="controls">
+        <input type="text" name="notesTxt" id="notesTxt" class="form-control"/>
+      </div>
+    </div>
+    <button type="button" class="btn btn-warning btn-block " ng-click="selectAnswer()"><i class="fa fa-camera"></i> Take a picture</button>
 </div>
 

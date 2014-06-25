@@ -28,9 +28,17 @@ angular.module('projectmgrApp')
           var promise = Api.post(settings.url + 'users/sign_in.json', user);
           promise.then(
             function (data){
-              if(data && data.data && data.data.id)
+              if(data && data.data && data.data.user)
               {
+                data = data.data;
+                window.sessionStorage.token = data.authenticity_token;
+                window.sessionStorage.user = data.user.email;
+                //TODO: save the user at session storage
                 $location.path('/projectMgr');
+              }
+              else
+              {
+                $scope.invalidCredentials = true;
               }
             }, 
             function (err){

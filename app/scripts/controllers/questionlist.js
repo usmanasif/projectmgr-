@@ -18,10 +18,10 @@ angular.module('projectmgrApp')
     $("#sw-wrapper").on("click", function(){
       var selectedData = SpinningWheel.getSelectedValues();
       var projectId = selectedData.keys[0];
+      $scope.isQuestionSelected = true;
       
       $scope.$apply();
     });
-    
 
     Api.get(settings.url + 'projects.json')
     .then(function(data){
@@ -33,4 +33,9 @@ angular.module('projectmgrApp')
     $scope.$on('$destroy', function() {
       SpinningWheel.destroy();
     });
+
+    $scope.selectAnswer = function(){
+      $scope.isQuestionSelected = false;
+    };
+
   }]);

@@ -18,14 +18,16 @@
               <input type="password" id="passwordTxt" name="passwordTxt" ng-model="user.password" class="form-control" />
             </div>
           </div>
+          <h4 class="text-danger" ng-show="invalidCredentials">
+            The username and password combination is wrong.
+          </h4>
           <br/>
           <div class="button-group">
-            <button type="submit" role="submit" class="btn btn-primary">
+            <button type="submit" role="submit" class="btn btn-primary btn-block">
               Sign in
             </button>
           </div>
       </form>
     </div>
-    {{data}}
   </div>
 </div>
