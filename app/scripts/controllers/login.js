@@ -25,12 +25,12 @@ angular.module('projectmgrApp')
         submitHandler: function() {
           var user = {user: $scope.user};
           console.dir(user);
-          var promise = Api.post(settings.url + 'users/sign_in.json', user);
+          var promise = Api.post(settings.url + 'users/sign_in.json', {data : user});
+          $("form [type=submit]").button('loading');
           promise.then(
             function (data){
-              if(data && data.data && data.data.user)
+              if(data && data.user)
               {
-                data = data.data;
                 window.sessionStorage.token = data.authenticity_token;
                 window.sessionStorage.user = data.user.email;
                 //TODO: save the user at session storage
@@ -40,9 +40,11 @@ angular.module('projectmgrApp')
               {
                 $scope.invalidCredentials = true;
               }
-            }, 
-            function (err){
-              console.dir(err);
+            }
+          );
+
+          promise.finally(function (){
+            $("form [type=submit]").button('reset')
           });
         }
     });

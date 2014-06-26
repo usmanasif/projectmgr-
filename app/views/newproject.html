@@ -23,6 +23,9 @@
               <input type="text" id="contactTxt" name="contactTxt" ng-model="project.contact_info" class="form-control"/>
             </div>
           </div>
+          <h4 class="text-danger" ng-show="showError">
+            There was an error saving the project
+          </h4>
           <br/>
           <div class="button-group">
             <button type="submit" role="submit" class="btn btn-primary btn-block">

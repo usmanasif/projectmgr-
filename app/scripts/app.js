@@ -44,15 +44,7 @@ angular.module('projectmgrApp', [
       templateUrl: 'views/newproject.html',
       controller: 'NewprojectCtrl'
     })
-    .when('/newchecklist', {
-      templateUrl: 'views/newchecklist.html',
-      controller: 'NewchecklistCtrl'
-    })
-    .when('/checklistmgr/:id', {
-      templateUrl: 'views/checklistmgr.html',
-      controller: 'ChecklistmgrCtrl'
-    })
-    .when('/checklist', {
+    .when('/checklist/:id', {
       templateUrl: 'views/checklist.html',
       controller: 'ChecklistCtrl'
     })

@@ -5,10 +5,20 @@ angular.module('projectmgrApp')
   function ($location, $rootScope, $q, $window) {
     return {
       request: function (config) {
-        config.headers = config.headers || {}
+        // TODO: if get request set params for post set data
+        var data;
+        switch(config.method){
+          case "GET":
+          case "DELETE":
+            data = config.params = config.params || {};
+          break;
+          default:
+            data = config.data = config.data || {};
+          break;
+        }
+        
         if ($window.sessionStorage.token) {
-          config.headers.authenticity_token = $window.sessionStorage.token;
-          // config.headers.AuthorizationUser = $window.sessionStorage.user;
+          data.authenticity_token = $window.sessionStorage.token;
         }
         return config;
       }

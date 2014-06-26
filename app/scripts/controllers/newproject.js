@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('projectmgrApp')
-  .controller('NewprojectCtrl', ['$scope', '$location', 'Api', function ($scope, $location, Api) {
+  .controller('NewprojectCtrl', ['$scope', '$location', 'Api', 
+    function ($scope, $location, Api) {
     $("#projectForm").validate({
       rules: {
         nameTxt: {
@@ -21,7 +22,17 @@ angular.module('projectmgrApp')
       unhighlight: validateUtils.unhighlight,            
       errorPlacement: validateUtils.errorPlacement,
       submitHandler: function() {
-          alert("success");
+          var promise = Api.post(settings.url + 'projects.json', $scope.project);
+          promise.then(
+            function (data){
+              if(data.error)
+              {
+                $scope.showError = true;
+              }else{
+                $location.path('/projectMgr');
+              }
+            }
+          );
         }
       }
     );

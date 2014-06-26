@@ -27,14 +27,14 @@ body {
 
 /* Custom page footer */
 .footer {
-  background-color: darkgrey;
+  background-color: #333333;
   border-top: 1px solid #e5e5e5;
   color: whitesmoke;
   text-align: justify;
 }
 
   .footer  a > i.fa {
-    padding: 0 2px 0 2px;
+    /*padding: 0 2px 0 2px;*/
   }
 
 /* Customize container */
@@ -170,4 +170,23 @@ body {
   color: #ffffff;
   background-color: #f28e29;
   border-color: #e27e19;
+}
+
+.btn-primary.disabled,
+.btn-primary[disabled],
+fieldset[disabled] .btn-primary,
+.btn-primary.disabled:hover,
+.btn-primary[disabled]:hover,
+fieldset[disabled] .btn-primary:hover,
+.btn-primary.disabled:focus,
+.btn-primary[disabled]:focus,
+fieldset[disabled] .btn-primary:focus,
+.btn-primary.disabled:active,
+.btn-primary[disabled]:active,
+fieldset[disabled] .btn-primary:active,
+.btn-primary.disabled.active,
+.btn-primary[disabled].active,
+fieldset[disabled] .btn-primary.active {
+  background-color: #f28429;
+  border-color: #f28e29;
 }

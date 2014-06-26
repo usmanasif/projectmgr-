@@ -22,6 +22,7 @@ angular.module('projectmgrApp')
       
       $scope.$apply();
     });
+    
 
     Api.get(settings.url + 'projects.json')
     .then(function(data){

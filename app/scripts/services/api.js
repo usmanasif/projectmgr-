@@ -14,8 +14,8 @@ angular.module('projectmgrApp')
       }).
       success(function(data, status, headers, config) {
         console.log('success');
-        //console.log(data);
-        deferred.resolve({'status': status, 'data' : data});
+        console.dir(data);
+        deferred.resolve(data);
       }).
       error(function(data, status, headers, config) {
         console.log('failed');
@@ -32,12 +32,12 @@ angular.module('projectmgrApp')
         headers: {
           'content-type':'application/json'
         },
-        data: {'data': params}
+        data: params
       }).
       success(function(data, status, headers, config) {
         console.log('success');
         console.log(data)
-        deferred.resolve({'status': status, 'data' : data});
+        deferred.resolve(data);
       }).
       error(function(data, status, headers, config) {
         console.log('failed');
@@ -54,12 +54,12 @@ angular.module('projectmgrApp')
         headers: {
           'content-type':'application/json'
         },
-        data: {'data': params}
+        data: params
         }).
         success(function(data, status, headers, config) {
           console.log('success');
           //console.log(data);
-        deferred.resolve({'status': status, 'data' : data});
+        deferred.resolve(data);
         }).
         error(function(data, status, headers, config) {
           console.log('failed');
@@ -76,12 +76,12 @@ angular.module('projectmgrApp')
         headers: {
           'content-type':'application/json'
         },
-        data: {'data': params}
+        data: params
         }).
         success(function(data, status, headers, config) {
           console.log('success');
           //console.log(data);
-        deferred.resolve({'status': status, 'data' : data});
+        deferred.resolve(data);
         }).
         error(function(data, status, headers, config) {
           console.log('failed');
@@ -98,12 +98,12 @@ angular.module('projectmgrApp')
         headers: {
           'content-type':'application/json'
         },
-        data: {'data': params}
+        data: params
         }).
         success(function(data, status, headers, config) {
           console.log('success');
           //console.log(data['data']);
-          deferred.resolve({'status': status, 'data' : data});
+          deferred.resolve(data);
         }).
         error(function(data, status, headers, config) {
           console.log('failed');

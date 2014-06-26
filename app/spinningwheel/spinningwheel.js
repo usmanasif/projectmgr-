@@ -270,10 +270,11 @@ var SpinningWheel = {
 			count = 0;
 			for (l in this.slotData[i].values) {
 				if (count == index) {
-					keys.push(l);
 					if(typeof this.slotData[i].values[i] ==='object'){
+						keys.push(this.slotData[i].values[l].key);
 						values.push(this.slotData[i].values[l].value);
 					}else{
+						keys.push(l);
 						values.push(this.slotData[i].values[l]);
 					}
 					break;

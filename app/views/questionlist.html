@@ -11,6 +11,15 @@
         <input type="text" name="notesTxt" id="notesTxt" class="form-control"/>
       </div>
     </div>
-    <button type="button" class="btn btn-warning btn-block " ng-click="selectAnswer()"><i class="fa fa-camera"></i> Take a picture</button>
+    <div class="row">
+      <div class="col-xs-6 btn-group" data-toggle="buttons" style="text-align: center">
+        <label class="btn btn-info btn-block">
+          <input type="checkbox">Resolved</input>  
+        </label> 
+      </div>
+      <div class="col-xs-6">
+        <button type="button" class="btn btn-info btn-block " ng-click="selectAnswer()"><i class="fa fa-camera"></i> Take a picture</button>    
+      </div>
+    </div>
 </div>
 
