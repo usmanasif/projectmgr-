@@ -1,35 +1,42 @@
 'use strict';
 
 angular.module('projectmgrApp')
-  .controller('ProjectlistCtrl', ['$scope', '$location', 'Api',
-    function ($scope, $location, Api) {
-    Api.get(settings.url + 'projects.json')
-    .then(function(data){
-        if(data.error)
-        {
-          console.dir(data.error);
+  .controller('ProjectlistCtrl', ['$scope', '$location', 'Api', 'Sharedata',
+    function ($scope, $location, Api, Sharedata){
+      var projects = [];
+      Api.get(settings.url + 'projects.json')
+      .then(function(data){
+          if(data.error)
+          {
+            console.dir(data.error);
+          }
+          else
+          {
+            projects = data;
+            var spinnerData =_.map(data, function(project){
+              return {key: project.id, value: project.name};
+            });
+
+            SpinningWheel.addSlot(spinnerData, 'center');
+            SpinningWheel.open();
+            $("#sw-wrapper").on("click", selectProjectData);
+          }
         }
-        else
-        {
-          var projects =_.map(data, function(project){
-            return {key: project.id, value: project.name};
-          });
+      );
 
-          SpinningWheel.addSlot(projects, 'center');
-          SpinningWheel.open();
-          $("#sw-wrapper").on("click", selectProjectData);
-        }
-      }
-    );
+      var selectProjectData = function(){
+        var selectedData = SpinningWheel.getSelectedValues();
+        var projectId = selectedData.keys[0];
+        var selectedProject = _.find(projects, function (project){
+          return project.id === projectId;
+        });
+        console.dir(selectedProject);
+        Sharedata.set('project', selectedProject);
+        $location.path('/checklist/' + projectId);
+        $scope.$apply();
+      };
 
-    var selectProjectData = function(){
-      var selectedData = SpinningWheel.getSelectedValues();
-      var projectId = selectedData.keys[0];
-      $location.path('/checklist/' + projectId);
-      $scope.$apply();
-    };
-
-    $scope.$on('$destroy', function() {
-      SpinningWheel.destroy();
-    });
+      $scope.$on('$destroy', function() {
+        SpinningWheel.destroy();
+      });
   }]);

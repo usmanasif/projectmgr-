@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('projectmgrApp')
-  .controller('ChecklistCtrl', ['$scope', '$location', 'Api',
-    function ($scope, $location, Api) {
+  .controller('ChecklistCtrl', ['$scope', '$location', 'Api', 'Sharedata',
+    function ($scope, $location, Api, Sharedata) {
     var numbers = [
       { key: '1', value:'Check list 1'},
       { key: '2', value:'Check list 2'},
@@ -13,6 +13,8 @@ angular.module('projectmgrApp')
       { key: '7', value:'Check list 7'},
       { key: '8', value:'Check list 8'}
     ];
+
+    $scope.project = Sharedata.get('project');
     SpinningWheel.addSlot(numbers, 'center', 5);
     SpinningWheel.open();
     $("#sw-wrapper").on("click", function(){

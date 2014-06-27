@@ -1,35 +1,45 @@
 'use strict';
 
 angular.module('projectmgrApp')
-  .controller('QuestionlistCtrl', ['$scope', '$location', 'Api',
-    function ($scope, $location, Api) {
-    var numbers = [
-      { key: '1', value:'Project Name 1'},
-      { key: '2', value:'Project Name 2'},
-      { key: '3', value:'Project Name 3'},
-      { key: '4', value:'Project Name 4'},
-      { key: '5', value:'Project Name 5'},
-      { key: '6', value:'Project Name 6'},
-      { key: '7', value:'Project Name 7'},
-      { key: '8', value:'Project Name 8'}
-    ];
-    SpinningWheel.addSlot(numbers, 'center', 5);
-    SpinningWheel.open();
-    $("#sw-wrapper").on("click", function(){
-      var selectedData = SpinningWheel.getSelectedValues();
-      var projectId = selectedData.keys[0];
-      $scope.isQuestionSelected = true;
-      
-      $scope.$apply();
-    });
-    
+  .controller('QuestionlistCtrl', ['$scope', '$location', '$routeParams', 'Api', 'Sharedata',
+    function ($scope, $location, $routeParams, Api, Sharedata) {
+      $scope.project = Sharedata.get('project');
+      Api.get(settings.url + 'questions.json')
+      .then(function (data){
+          if(data.error)
+          {
+            console.dir(data.error);
+          }
+          else
+          {
+            console.log($routeParams.id);
+            var filteredData = _.filter(data, function (question){
+              return question.category_id == $routeParams.id;
+            });
 
-    Api.get(settings.url + 'projects.json')
-    .then(function(data){
+            console.dir(filteredData);
 
-      }, function(error){
+            var spinnerData =_.map(filteredData, function(question){
+              return {key: question.id, value: question.body};
+            });
 
-    });
+            SpinningWheel.addSlot(spinnerData, 'center');
+            SpinningWheel.open();
+            $("#sw-wrapper").on("click", selectQuestionData);
+          }
+        }
+      );
+
+      var selectQuestionData = function(){
+        var selectedData = SpinningWheel.getSelectedValues();
+        var questionId = selectedData.keys[0];
+
+        Api.get(settings.url + 'answers,json')
+        .then(function (data){
+          console.log('Answers: ');
+          console.dir(data);
+        });
+      };
 
     $scope.$on('$destroy', function() {
       SpinningWheel.destroy();
