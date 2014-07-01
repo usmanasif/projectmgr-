@@ -59,7 +59,7 @@ angular.module('projectmgrApp', [
 ]);
 
 var settings = {
-  url:'http://codingqna.com:3000/'
+  url:'http://localhost:3000/'
 };
 
 // I don't want any real form submit, just ajax submits

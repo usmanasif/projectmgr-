@@ -60,7 +60,7 @@ angular.module('projectmgrApp')
         submitHandler: function() {
           $("form [type=submit]").button('loading');
           Api.post(settings.url + 'projects/' + $scope.report.project_id +'/incidents',
-            {incident : $scope.report})
+            {incident : $scope.report, format: 'json'})
           .then(function (data){
             if (data.error){
               alert(data.error);
