@@ -1,25 +1,29 @@
 <div class="app-header">
-  <i class="fa fa-bars fa-2"></i> Select a Question - {{project.name}}
+  <i class="fa fa-bars fa-2"></i> Select a Question
 </div>
 <div class="answers" ng-show="isQuestionSelected">
-    <button type="button" class="btn btn-success btn-block" ng-click="selectAnswer()"><i class="fa fa-circle"></i> Yes</button>
-    <button type="button" class="btn btn-danger btn-block" ng-click="selectAnswer()"><i class="fa fa-circle"></i> No</button>
-    <button type="button" class="btn btn-default btn-block" ng-click="selectAnswer()"><i class="fa fa-circle"></i> NA</button>
-    <div class="control-group">
-      <label for="notesTxt" class="control-label">Notes</label>
-      <div class="controls">
-        <input type="text" name="notesTxt" id="notesTxt" class="form-control"/>
-      </div>
+  <div class="btn-group btn-block center">
+    <button type="button" class="btn btn-success col-xs-4" ng-click="selectAnswer('yes')"><i class="fa fa-circle"></i> Yes</button>
+    <button type="button" class="btn btn-danger col-xs-4" ng-click="selectAnswer('no')"><i class="fa fa-circle"></i> No</button>
+    <button type="button" class="btn btn-default col-xs-4" ng-click="selectAnswer('na')"><i class="fa fa-circle"></i> NA</button>
+  </div>
+  <div class="control-group">
+    <label for="notesTxt" class="control-label">Notes</label>
+    <div class="controls">
+      <textarea name="notesTxt" id="notesTxt" class="form-control" rows="4" cols="50">
+        
+      </textarea>
     </div>
-    <div class="row">
-      <div class="col-xs-6 btn-group" data-toggle="buttons" style="text-align: center">
-        <label class="btn btn-info btn-block">
-          <input type="checkbox">Resolved</input>  
-        </label> 
-      </div>
-      <div class="col-xs-6">
-        <button type="button" class="btn btn-info btn-block " ng-click="selectAnswer()"><i class="fa fa-camera"></i> Take a picture</button>    
-      </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-6 btn-group" data-toggle="buttons" style="text-align: center">
+      <button type="button" ng-class="getResolveCss()" ng-click="changeResolve()">
+        <i ng-class="getResolveIcon()"></i>{{resolvedStatus}}  
+      </button> 
     </div>
+    <div class="col-xs-6">
+      <button type="button" class="btn btn-picture btn-block " ng-click="takePic()"><i class="fa fa-camera"></i> Take a picture</button>    
+    </div>
+  </div>
 </div>
 

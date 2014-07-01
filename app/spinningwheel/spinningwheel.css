@@ -80,7 +80,14 @@
 	padding:0 8px;
 	height:44px;
 	overflow:hidden;
-	font:bold 24px/44px Helvetica,sans-serif;
+	font:bold 16px/16px Helvetica,sans-serif;
+}
+
+#sw-slots li.small {
+	padding:0 8px;
+	height:44px;
+	overflow:hidden;
+	font:bold 11px/11px Helvetica,sans-serif;
 }
 
 #sw-frame {

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('projectmgrApp')
-  .controller('IncidentreportCtrl', ['$scope', '$location', '$routeParams','Api', 
+  .controller('IncidentreportCtrl', ['$scope', '$location', '$routeParams','Api',
     function ($scope, $location, $routeParams, Api){
       $scope.report = {project_id : $routeParams["id"]};
 
@@ -58,22 +58,33 @@ angular.module('projectmgrApp')
         unhighlight: validateUtils.unhighlight,            
         errorPlacement: validateUtils.errorPlacement,
         submitHandler: function() {
-          alert("success");
+          $("form [type=submit]").button('loading');
+          Api.post(settings.url + 'projects/' + $scope.report.project_id +'/incidents',
+            {incident : $scope.report})
+          .then(function (data){
+            if (data.error){
+              alert(data.error);
+            } else {
+              alert('Saved!');
+              $location.path('/projectMgr');
+            }
+          })
+          .finally(function(){
+            $("form [type=submit]").button('reset');
+          });
         }
       });
+
+      $scope.takePic = function (){
+        var options = {
+          sourceType: 1,
+          quality: 60,
+          destinationType: Camera.DestinationType.FILE_URI
+        };
+        navigator.camera.getPicture(uploadPhoto,null,options);
+      };
+
+      function uploadPhoto(fileUrl){
+          $scope.report.file = fileUrl;
+      }
   }]);
-
-
-// report_type
-// your_name
-// job_title
-// injury_date
-// injury_time
-// witnesses
-// location
-// circumstances
-// event_discription
-// injuries_type
-// ppe_used
-// medical_assistance_provided
-// project_id 

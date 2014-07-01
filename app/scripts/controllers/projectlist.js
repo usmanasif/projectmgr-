@@ -3,6 +3,7 @@
 angular.module('projectmgrApp')
   .controller('ProjectlistCtrl', ['$scope', '$location', 'Api', 'Sharedata',
     function ($scope, $location, Api, Sharedata){
+      Sharedata.clear();
       var projects = [];
       Api.get(settings.url + 'projects.json')
       .then(function(data){
@@ -17,7 +18,7 @@ angular.module('projectmgrApp')
               return {key: project.id, value: project.name};
             });
 
-            SpinningWheel.addSlot(spinnerData, 'center');
+            SpinningWheel.addSlot(spinnerData, 'left');
             SpinningWheel.open();
             $("#sw-wrapper").on("click", selectProjectData);
           }

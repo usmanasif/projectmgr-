@@ -10,12 +10,11 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link rel="stylesheet" href="spinningwheel/spinningwheel.css">
     <!-- build:css styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="bower_components/Font-Awesome/css/font-awesome.css" />
-    <link rel="stylesheet" href="bower_components/qtip2/jquery.qtip.css" />
-    <link rel="stylesheet" href="spinningwheel/spinningwheel.css">
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css({.tmp,app}) styles/main.css -->
@@ -29,12 +28,15 @@
 
 
     <div class="header navbar-fixed-top" ng-controller="HeaderCtrl">
-      <a class="btn" ng-show="isBackAllowed()" ng-click="gotoBack()">
-        <i class="fa fa-chevron-left"></i>Back
-      </a>
-      <a class="btn pull-right" ng-show="isHomeAllowed()" ng-click="gotoHome()" style="display:inline-block">
-        <i class="fa fa-home"></i>
-      </a>
+        <div class="row">
+            <a class="btn col-xs-3" ng-show="isBackAllowed()" ng-click="gotoBack()">
+                <i class="fa fa-chevron-left"></i>Back
+            </a>      
+            <h3 class="col-xs-6">{{project.name}}</h3>
+            <a class="btn col-xs-3" ng-show="isHomeAllowed()" ng-click="gotoHome()" style="display:inline-block">
+                <i class="fa fa-home"></i>
+            </a>
+        </div>
     </div>
 
     <!-- Add your site or application content here -->
@@ -67,20 +69,22 @@
 
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
+    <script src="bower_components/modernizr/modernizr.js"></script>
     <script src="bower_components/jquery/jquery.js"></script>
-    <script src="bower_components/underscore/underscore.js"></script>
-    <script src="bower_components/qtip2/jquery.qtip.js"></script>
-    <script src="bower_components/jquery-validate/dist/jquery.validate.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="bower_components/angular-resource/angular-resource.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-loader/angular-loader.js"></script>
-    <script src="spinningwheel/spinningwheel.js"></script>
+    <script src="bower_components/jquery-validate/dist/jquery.validate.js"></script>
+    <script src="bower_components/qtip2/jquery.qtip.js"></script>
+    <script src="bower_components/qtip2/basic/jquery.qtip.js"></script>
+    <script src="bower_components/underscore/underscore.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
-
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="cordova.js"></script>
+    <script src="spinningwheel/spinningwheel.js"></script>
     <script src="scripts/app.js"></script>
     <script src="scripts/controllers/login.js"></script>
     <script src="scripts/controllers/projectmgr.js"></script>

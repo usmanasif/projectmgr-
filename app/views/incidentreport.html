@@ -27,13 +27,13 @@
           <div class="control-group">
             <label class="control-label" for="injuryDateTxt">Injury Date </label>  
             <div class="controls">
-              <input type="text" id="injuryDateTxt" name="injuryDateTxt" ng-model="report.injury_date" class="form-control"/>
+              <input type="date" id="injuryDateTxt" name="injuryDateTxt" ng-model="report.injury_date" class="form-control"/>
             </div>
           </div>
           <div class="control-group">
             <label class="control-label" for="injuryTimeTxt">Time of Injury </label>  
             <div class="controls">
-              <input type="text" id="injuryTimeTxt" name="injuryTimeTxt" ng-model="report.injury_time" class="form-control"/>
+              <input type="time" id="injuryTimeTxt" name="injuryTimeTxt" ng-model="report.injury_time" class="form-control"/>
             </div>
           </div>
           <div class="control-group">
@@ -79,11 +79,11 @@
             </div>
           </div>
           <br/>
-          <div class="button-group">
-            <button type="submit" role="submit" class="btn btn-primary btn-block">
+          <div class="btn-group btn-block">
+            <button type="submit" role="submit" class="btn btn-primary col-xs-6" data-loading-text="Saving...">
               Save
             </button>
-        </a>
+            <button type="button" class="btn btn-picture col-xs-6" ng-click="takePic()"><i class="fa fa-camera"></i> Take a picture</button>    
           </div>
       </form>
     </div>

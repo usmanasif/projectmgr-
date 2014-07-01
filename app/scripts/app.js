@@ -62,10 +62,39 @@ var settings = {
   url:'http://codingqna.com:3000/'
 };
 
-// I don't want any real form submit, just ajax
+// I don't want any real form submit, just ajax submits
 $.validator.setDefaults({
   debug: true
 });
+
+var myPhonegapApp = {
+  // Application Constructor
+  initialize: function() {
+    this.bindEvents();
+  },
+  // Bind Event Listeners
+  //
+  // Bind any events that are required on startup. Common events are:
+  // 'load', 'deviceready', 'offline', and 'online'.
+  bindEvents: function() {
+    document.addEventListener('deviceready', this.onDeviceReady, false);
+  },
+  // deviceready Event Handler
+  //
+  // The scope of 'this' is the event. In order to call the 'receivedEvent'
+  // function, we must explicitly call 'app.receivedEvent(...);'
+  onDeviceReady: function() {
+    myPhonegapApp.receivedEvent();
+  },
+  // Update DOM on a Received Event
+  receivedEvent: function() {
+    console.log('Device ready');
+  }
+};
+
+myPhonegapApp.initialize();
+
+
 var validateUtils = {
 
   highlight: function(element) {

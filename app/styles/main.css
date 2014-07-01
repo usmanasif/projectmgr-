@@ -5,7 +5,6 @@ body {
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
-.header,
 .marketing,
 .footer {
   padding-left: 15px;
@@ -15,7 +14,6 @@ body {
 /* Custom page header */
 .header {
   background-color: white;
-  border-bottom: 1px solid #e5e5e5;
 }
 /* Make the masthead heading the same height as the navigation */
 .header h3 {
@@ -23,7 +21,15 @@ body {
   margin-bottom: 0;
   line-height: 40px;
   padding-bottom: 19px;
+  position: relative;
+  top: 0.4em;
+  text-transform: capitalize;
 }
+
+.header .btn {
+  font-size: 2.2em;
+}
+
 
 /* Custom page footer */
 .footer {
@@ -93,9 +99,6 @@ body {
   margin-right: 0;
 }
 
-.header>.btn {
-  font-size: 2.2em;
-}
 .app-header{
   background-color: #f26629;
   color: whitesmoke;
@@ -170,6 +173,25 @@ body {
   color: #ffffff;
   background-color: #f28e29;
   border-color: #e27e19;
+}
+
+.btn-picture,
+.btn-picture:hover,
+.btn-picture:focus,
+.btn-picture:active,
+.btn-picture.active {
+  color: #ffffff;
+}
+
+.btn-picture {
+  background-color: #222;
+}
+
+.btn-picture:hover,
+.btn-picture:focus,
+.btn-picture:active,
+.btn-picture.active {
+  background-color: #333;
 }
 
 .btn-primary.disabled,

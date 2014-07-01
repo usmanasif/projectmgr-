@@ -1,38 +1,48 @@
 'use strict';
 
 angular.module('projectmgrApp')
-  .controller('ChecklistCtrl', ['$scope', '$location', 'Api', 'Sharedata',
-    function ($scope, $location, Api, Sharedata) {
-    var numbers = [
-      { key: '1', value:'Check list 1'},
-      { key: '2', value:'Check list 2'},
-      { key: '3', value:'Check list 3'},
-      { key: '4', value:'Check list 4'},
-      { key: '5', value:'Check list 5'},
-      { key: '6', value:'Check list 6'},
-      { key: '7', value:'Check list 7'},
-      { key: '8', value:'Check list 8'}
-    ];
+  .controller('ChecklistCtrl', ['$scope', '$location', '$routeParams', 'Api', 'Sharedata',
+    function ($scope, $location, $routeParams, Api, Sharedata) {
+      if(!Sharedata.get('project')) {
+        $location.path('/projectMgr');
+        return;
+      }
 
-    $scope.project = Sharedata.get('project');
-    SpinningWheel.addSlot(numbers, 'center', 5);
-    SpinningWheel.open();
-    $("#sw-wrapper").on("click", function(){
-      var selectedData = SpinningWheel.getSelectedValues();
-      var checkListId = selectedData.keys[0];
-      $location.path('/categoryList/' + checkListId);
-      $scope.$apply();
-    });
-    
+      var projectId = $routeParams.id;
+      $scope.project = Sharedata.get('project');
+      var checklistList = [];
 
-    Api.get(settings.url + 'projects.json')
-    .then(function(data){
+      Api.get(settings.url + 'projects/'+ projectId +'/reports.json')
+      .then(function (data){
+        if(data.error)
+        {
+          console.dir(data.error);
+        }
+        else
+        {
+          console.dir(data);
+          checklistList = data.obj['@reports'];
+          var checklistMap = _.map(checklistList, function (checklist){
+            return {key : checklist.id, value : checklist.name };
+          });
+          SpinningWheel.addSlot(checklistMap, 'left', 5);
+          SpinningWheel.open();
+          $('#sw-wrapper').on('click', onSelectedCheckList);
+        }
+      });
 
-      }, function(error){
+      var onSelectedCheckList = function(){
+        var selectedData = SpinningWheel.getSelectedValues();
+        var checkListId = selectedData.keys[0];
+        var selectedChecklist = _.find(checklistList, function (checklist){
+          return checklist.id === checkListId;
+        });
+        Sharedata.set('checklist', selectedChecklist);
+        $location.path('/categoryList/' + checkListId);
+        $scope.$apply();
+      };
 
-    });
-
-    $scope.$on('$destroy', function() {
-      SpinningWheel.destroy();
-    });
+      $scope.$on('$destroy', function() {
+        SpinningWheel.destroy();
+      });
   }]);

@@ -3,8 +3,14 @@
 angular.module('projectmgrApp')
   .controller('QuestionlistCtrl', ['$scope', '$location', '$routeParams', 'Api', 'Sharedata',
     function ($scope, $location, $routeParams, Api, Sharedata) {
+      if(!Sharedata.get('project')) {
+        $location.path('/projectMgr');
+        return;
+      }
+
       $scope.project = Sharedata.get('project');
-      Api.get(settings.url + 'questions.json')
+      var checklist = Sharedata.get('checklist');
+      Api.get(settings.url + 'categories/' + $routeParams.id + '/questions.json')
       .then(function (data){
           if(data.error)
           {
@@ -13,40 +19,102 @@ angular.module('projectmgrApp')
           else
           {
             console.log($routeParams.id);
-            var filteredData = _.filter(data, function (question){
-              return question.category_id == $routeParams.id;
-            });
-
-            console.dir(filteredData);
-
-            var spinnerData =_.map(filteredData, function(question){
+            var spinnerData =_.map(data.questions, function(question){
               return {key: question.id, value: question.body};
             });
 
-            SpinningWheel.addSlot(spinnerData, 'center');
+            SpinningWheel.addSlot(spinnerData, 'left');
             SpinningWheel.open();
-            $("#sw-wrapper").on("click", selectQuestionData);
+            $('#sw-slots li').addClass("small");
+            $('#sw-wrapper').on("click", selectQuestionData);
           }
         }
       );
 
+      Api.get(settings.url +'reports/'+ checklist.id +'/answers.json').
+        then(function (data){
+          if(data.error)
+            {console.dir(error);
+          }
+          else
+          {
+            answers = data.answers;
+          }
+        });
+
+      var questionId;
+      var answers = [];
+
       var selectQuestionData = function(){
         var selectedData = SpinningWheel.getSelectedValues();
-        var questionId = selectedData.keys[0];
+        questionId = selectedData.keys[0];
+        $scope.isQuestionSelected = true;
+        $scope.$apply();
+      };
 
-        Api.get(settings.url + 'answers,json')
+      $scope.$on('$destroy', function() {
+        SpinningWheel.destroy();
+      });
+
+      $scope.selectAnswer = function(status){
+        var answersToUpdate = _.find(answers, function (answ){
+          return answ.question_id ==questionId;
+        });
+        answersToUpdate.status = status;
+        $scope.isQuestionSelected = false;
+        Api.patch(settings.url + 'projects/' + $scope.project.id + '/answers/' + answersToUpdate.id,
+          {answer: answersToUpdate })
         .then(function (data){
-          console.log('Answers: ');
-          console.dir(data);
+          if (data.error){
+            console.dir(error);
+          } else {
+            console.dir(data);
+          } 
         });
       };
 
-    $scope.$on('$destroy', function() {
-      SpinningWheel.destroy();
-    });
+      $scope.changeResolve = function (){
+        if ($scope.resolvedStatus == 'Resolved'){
+          $scope.resolvedStatus = 'Unresolved';
+        }
+        else
+        {
+          $scope.resolvedStatus = 'Resolved';
+        }
+      };
 
-    $scope.selectAnswer = function(){
-      $scope.isQuestionSelected = false;
-    };
+      $scope.getResolveCss = function (){
+        return $scope.resolvedStatus == 'Resolved' ? 'btn btn-info btn-block' : 'btn btn-warning btn-block';
+      }
+
+      $scope.getResolveIcon = function(){
+        return $scope.resolvedStatus == 'Resolved' ? 'fa fa-check' : 'fa fa-ban';
+      }
+
+      $scope.takePic = function (){
+        try
+        {
+          var options = {
+            sourceType: 1,
+            quality: 60,
+            destinationType: Camera.DestinationType.FILE_URI
+          };
+          navigator.camera.getPicture(uploadPhoto,null,options);
+        }
+        catch(error){
+          alert(error.message);
+        }
+      };
+
+      function uploadPhoto(fileUrl){
+        answersToUpdate.url = fileUrl;
+      }
+
+      function resetView() {
+        $scope.resolvedStatus = "Unresolved";
+      };
+
+      resetView();
+
 
   }]);

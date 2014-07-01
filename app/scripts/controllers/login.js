@@ -44,7 +44,7 @@ angular.module('projectmgrApp')
           );
 
           promise.finally(function (){
-            $("form [type=submit]").button('reset')
+            $("form [type=submit]").button('reset');
           });
         }
     });

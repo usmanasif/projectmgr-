@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('projectmgrApp')
-  .controller('HeaderCtrl', ['$scope', '$location',
-    function ($scope, $location) {
+  .controller('HeaderCtrl', ['$scope', '$location', 'Sharedata',
+    function ($scope, $location, Sharedata) {
       var isBackAllowed = true;
       var isHomeAllowed = true;
       $scope.isBackAllowed = function (){
@@ -15,6 +15,7 @@ angular.module('projectmgrApp')
 
       $scope.gotoHome = function (){
         $location.path('/projectMgr');
+        Sharedata.clear();
       }
 
       $scope.gotoBack = function (){
@@ -23,6 +24,7 @@ angular.module('projectmgrApp')
 
       var updateHeaderStatus = function () {
         var location = ($location.path().match(/\/\w+/)|| [])[0];
+        $scope.project = Sharedata.get('project');
 
         switch (location) {
           case '/':
