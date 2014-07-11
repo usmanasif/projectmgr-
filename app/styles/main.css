@@ -26,7 +26,7 @@ body {
   text-transform: capitalize;
 }
 
-.header .btn {
+.header {
   font-size: 2.2em;
 }
 
@@ -118,7 +118,7 @@ body {
 
 .answers {
   position: relative;
-  top: 16em;
+  top: 19em;
 }
 
 .answers > .control-group {
@@ -129,8 +129,12 @@ body {
   top: 27em !important;
 }
 
-#sw-header {
+#sw-cancel {
   display: none;
+}
+
+#sw-done {
+  
 }
 
 #sw-frame {
@@ -139,19 +143,25 @@ body {
   box-sizing: content-box;
 }
 
-.header a,
-.footer a {
-  color: #f26629;
+.footer {
+  text-align: center;
 }
 
-  .header a:hover,
-  .header a:focus,
-  .header a:active,
-  .header a.active,
-  .footer a:hover,
-  .footer a:focus,
-  .footer a:active,
-  .footer a.active{
+.header button,
+.footer button {
+  color: #f26629;
+  border: none;
+  background: none;
+}
+
+  .header button:hover,
+  .header button:focus,
+  .header button:active,
+  .header button.active,
+  .footer button:hover,
+  .footer button:focus,
+  .footer button:active,
+  .footer button.active{
     color: #f28e29;
   }
 
@@ -195,7 +205,10 @@ body {
 }
 
 .btn-primary.disabled,
-.btn-primary[disabled],
+.btn-primary[disabled] {
+  color: 
+}
+
 fieldset[disabled] .btn-primary,
 .btn-primary.disabled:hover,
 .btn-primary[disabled]:hover,

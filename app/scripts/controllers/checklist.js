@@ -26,8 +26,8 @@ angular.module('projectmgrApp')
             return {key : checklist.id, value : checklist.name };
           });
           SpinningWheel.addSlot(checklistMap, 'left', 5);
+          SpinningWheel.setDoneAction(onSelectedCheckList);
           SpinningWheel.open();
-          $('#sw-wrapper').on('click', onSelectedCheckList);
         }
       });
 

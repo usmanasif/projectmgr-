@@ -9,9 +9,7 @@ angular.module('projectmgrApp')
       };
 
       $scope.hasSelectedProject = function() {
-        if(!Sharedata.get('project')){
-          return 'disabled';
-        }
+        return Sharedata.get('project') != null;
       };
 
       $scope.createProject = function(){
