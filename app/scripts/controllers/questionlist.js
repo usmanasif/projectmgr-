@@ -131,7 +131,7 @@ angular.module('projectmgrApp')
 
       function uploadPhoto(fileUrl){
 
-        alert(fileUrl);
+        
         newUrl = fileUrl;
       }
 

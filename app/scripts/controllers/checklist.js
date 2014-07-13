@@ -22,9 +22,12 @@ angular.module('projectmgrApp')
         {
           console.dir(data);
           checklistList = data.obj['@reports'];
+          
           var checklistMap = _.map(checklistList, function (checklist){
-            return {key : checklist.id, value : checklist.name };
+           var arr = checklist.name.split(" ");
+            return {key : checklist.id, value : arr[arr.length - 1] };
           });
+
           SpinningWheel.addSlot(checklistMap, 'left', 5);
           SpinningWheel.open();
           $('#sw-wrapper').on('click', onSelectedCheckList);

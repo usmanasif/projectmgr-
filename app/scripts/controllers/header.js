@@ -38,6 +38,7 @@ angular.module('projectmgrApp')
             break;
         }
       };
+        
 
       $scope.$on('$locationChangeSuccess', updateHeaderStatus);
 
