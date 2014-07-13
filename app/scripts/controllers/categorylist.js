@@ -22,8 +22,8 @@ angular.module('projectmgrApp')
             });
 
             SpinningWheel.addSlot(spinnerData, 'left');
+            SpinningWheel.setDoneAction(selectCategoryData);
             SpinningWheel.open();
-            $("#sw-wrapper").on("click", selectCategoryData);
           }
         }
       );

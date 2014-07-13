@@ -29,8 +29,8 @@ angular.module('projectmgrApp')
           });
 
           SpinningWheel.addSlot(checklistMap, 'left', 5);
+          SpinningWheel.setDoneAction(onSelectedCheckList);
           SpinningWheel.open();
-          $('#sw-wrapper').on('click', onSelectedCheckList);
         }
       });
 

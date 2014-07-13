@@ -9,10 +9,14 @@ angular.module('projectmgrApp')
       };
 
       $scope.hasSelectedProject = function() {
+<<<<<<< HEAD
 
          if(!Sharedata.get('project')){
           return 'disabled';
         }
+=======
+        return Sharedata.get('project') != null;
+>>>>>>> c89ca77751ae654d922f15dea3dc493d438f9abb
       };
       $scope.hasprojectandcheklist = function() {
         

@@ -19,8 +19,8 @@ angular.module('projectmgrApp')
             });
 
             SpinningWheel.addSlot(spinnerData, 'left');
+            SpinningWheel.setDoneAction(selectProjectData);
             SpinningWheel.open();
-            $("#sw-wrapper").on("click", selectProjectData);
           }
         }
       );

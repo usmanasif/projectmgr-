@@ -8,41 +8,44 @@ angular.module('projectmgrApp')
         return;
       }
 
+      var loadQuestions = function(){
+        Api.get(settings.url + 'categories/' + $routeParams.id + '/questions.json')
+        .then(function (data){
+            if(data.error)
+            {
+              console.dir(data.error);
+            }
+            else
+            {
+              console.log($routeParams.id);
+              var spinnerData =_.map(data.questions, function(question){
+                return {key: question.id, value: question.body};
+              });
+
+              SpinningWheel.addSlot(spinnerData, 'left');
+              SpinningWheel.setDoneAction(selectQuestionData);
+              SpinningWheel.open();
+              $('#sw-slots li').addClass("small");
+            }
+          }
+        );
+      };
+
       $scope.project = Sharedata.get('project');
       var checklist = Sharedata.get('checklist');
-      Api.get(settings.url + 'categories/' + $routeParams.id + '/questions.json')
-      .then(function (data){
-          if(data.error)
-          {
-            console.dir(data.error);
-          }
-          else
-          {
-            console.log($routeParams.id);
-            var spinnerData =_.map(data.questions, function(question){
-              return {key: question.id, value: question.body};
-            });
-
-            SpinningWheel.addSlot(spinnerData, 'left');
-            SpinningWheel.open();
-            $('#sw-slots li').addClass("small");
-            $('#sw-wrapper').on("click", selectQuestionData);
-          }
+      loadQuestions();
+      
+      Api.get(settings.url +'reports/'+ checklist.id +'/answers.json').
+        
+      then(function (data){
+        if(data.error)
+          {console.dir(error);
         }
-      );
-       //$.ajax("http://localhost:3000/projects/1/answers/1",{data:{authenticity_token:"f443c742584f5b591d349b9e78f62c77", status: "1"}, method:"patch"}).done(function(data){console.log(data);}); 
-        //console.log(settings.url);
-        Api.get(settings.url +'reports/'+ checklist.id +'/answers.json').
-          
-        then(function (data){
-          if(data.error)
-            {console.dir(error);
-          }
-          else
-          {
-            answers = data.answers;
-          }
-        });
+        else
+        {
+          answers = data.answers;
+        }
+      });
 
       var questionId;
       var answers = [];

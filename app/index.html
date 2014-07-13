@@ -29,27 +29,34 @@
 
     <div class="header navbar-fixed-top" ng-controller="HeaderCtrl">
         <div class="row">
-            <a class="btn col-xs-3" ng-show="isBackAllowed()" ng-click="gotoBack()">
+            <button class="col-xs-4" ng-show="isBackAllowed()" ng-click="gotoBack()">
                 <i class="fa fa-chevron-left"></i>Back
-            </a>      
+            </button>      
             <h3 class="col-xs-6">{{project.name}}</h3>
-            <a class="btn col-xs-3" ng-show="isHomeAllowed()" ng-click="gotoHome()" style="display:inline-block">
+            <button class="col-xs-2" ng-show="isHomeAllowed()" ng-click="gotoHome()" style="display:inline-block">
                 <i class="fa fa-home"></i>
-            </a>
+            </button>
         </div>
     </div>
 
     <!-- Add your site or application content here -->
-    <div class="container" ng-view="" style="padding-top: 50px; padding-bottom: 50px"></div>
+    <div class="container" ng-view="" style="padding-top: 40px; padding-bottom: 50px"></div>
 
     <div class="footer navbar navbar-default navbar-fixed-bottom" ng-controller="FooterCtrl">
       <div ng-show="hasFooter()">
+<<<<<<< HEAD
         <a href="javascript:void(0);" class="btn" ng-click="createProject()"><i class="fa fa-1x">Create Project</i></a>
         <a href="javascript:void(0);" class="btn" ng-click="openProject()"><i class="fa fa-1x"></i>Open Project</a>
         <a href="javascript:void(0);" class="btn" ng-click="reportIncident()" ng-class="hasSelectedProject()"><i class="fa fa-1x" >Incident Report</i></a>
         <a href="javascript:void(0);" class="btn" ng-click="openCheckList()" ng-class="hasSelectedProject()"><i class="fa fa-1x">Open Checklist</i></a>
         <a id = "pdf" href="javascript:void(0);"  download = "foo.pdf" class="btn" ng-click="downloadpdf()" 
         ng-class="hasprojectandcheklist()" ><i class="fa fa-1x">Download Checklist</i></a>
+=======
+        <button ng-click="createProject()"><i class="fa fa-plus-circle fa-4x"></i></button>
+        <button ng-click="openProject()"><i class="fa fa-file fa-4x"></i></button>
+        <button ng-click="reportIncident()" ng-disabled="!hasSelectedProject()"><i class="fa fa-medkit fa-4x" ></i></button>
+        <button ng-click="openCheckList()" ng-disabled="!hasSelectedProject()"><i class="fa fa-list-ul fa-4x"></i></button>
+>>>>>>> c89ca77751ae654d922f15dea3dc493d438f9abb
       </div>
     </div>
 
@@ -82,6 +89,7 @@
     <script src="bower_components/qtip2/jquery.qtip.js"></script>
     <script src="bower_components/qtip2/basic/jquery.qtip.js"></script>
     <script src="bower_components/underscore/underscore.js"></script>
+    <script src="bower_components/fastclick/lib/fastclick.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:js({.tmp,app}) scripts/scripts.js -->

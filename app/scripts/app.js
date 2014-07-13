@@ -94,7 +94,6 @@ var myPhonegapApp = {
 
 myPhonegapApp.initialize();
 
-
 var validateUtils = {
 
   highlight: function(element) {

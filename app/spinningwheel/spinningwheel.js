@@ -489,7 +489,7 @@ var SpinningWheel = {
 			this.doneAction();
 		}
 		
-		this.close();
+		// this.close();
 	},
 
 	setCancelAction: function (action) {
